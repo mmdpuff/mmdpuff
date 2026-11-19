@@ -1,0 +1,30 @@
+name: Build 3D contribution city
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '18 2 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  contributions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout profile repository
+        uses: actions/checkout@v5
+      - name: Generate 3D contributions
+        uses: yoshi389111/github-profile-3d-contrib@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: mmdpuff
+      - name: Commit refreshed images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile-3d-contrib/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh 3D contributions"
+            git push
+          fi
