@@ -1,6 +1,4 @@
 ## Hi there 👋
-[![GitHub WidgetBox](https://github-widgetbox.vercel.app/api/profile?username=mmdpuff&data=repositories,commits)](https://github.com/Jurredr/github-widgetbox)
-
 
 I'm a software engineer from Iran.
 
